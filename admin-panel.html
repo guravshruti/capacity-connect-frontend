@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacity Connect - Admin Panel</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Capacity Connect</h2>
+        <div class="navbar-links">
+            <a href="courses.html">Courses</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="materials.html">Materials</a>
+            <a href="admin-panel.html" class="active">Admin</a>
+            <a href="certificates.html">Certificates</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+    <div class="app-main">
+        <div class="page-hero-plain">
+            <h1>Admin Panel</h1>
+            <p>Manage institutional training resources and platform analytics.</p>
+        </div>
+
+        <div class="tab-bar">
+            <div class="tab-item active" id="tab-courses" onclick="switchTab('courses')">Course Management</div>
+            <div class="tab-item" id="tab-analytics" onclick="switchTab('analytics')">Analytics Dashboard</div>
+            <div class="tab-item" id="tab-announcements" onclick="switchTab('announcements')">Announcements</div>
+        </div>
+
+        <!-- Course Management Tab -->
+        <div id="panel-courses">
+            <div class="course-card">
+                <h3>New / Edit Course</h3>
+                <span class="field-label">Course Title</span>
+                <input type="text" id="course-title" placeholder="e.g. Introduction to Data Analysis">
+
+                <span class="field-label">Description</span>
+                <textarea id="course-description" placeholder="Short description of what this course covers"></textarea>
+
+                <div style="display:flex; gap:14px;">
+                    <div style="flex:1;">
+                        <span class="field-label">Category</span>
+                        <select id="course-category">
+                            <option value="Technical">Technical</option>
+                            <option value="Scientific">Scientific</option>
+                            <option value="Administrative">Administrative</option>
+                            <option value="Policy & Compliance">Policy & Compliance</option>
+                        </select>
+                    </div>
+                    <div style="flex:1;">
+                        <span class="field-label">Level</span>
+                        <select id="course-level">
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Advanced">Advanced</option>
+                            <option value="All Levels">All Levels</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:14px;">
+                    <div style="flex:1;">
+                        <span class="field-label">Duration (hours)</span>
+                        <input type="number" id="course-duration" placeholder="e.g. 4" step="0.5" min="0">
+                    </div>
+                    <div style="flex:1;">
+                        <span class="field-label">Status</span>
+                        <select id="course-status">
+                            <option value="NORMAL">Normal</option>
+                            <option value="REQUIRED">Required for Role</option>
+                            <option value="MANDATORY">Mandatory</option>
+                        </select>
+                    </div>
+                </div>
+
+                <span class="field-label">Image URL</span>
+                <input type="text" id="course-image-url" placeholder="https://images.unsplash.com/...">
+
+                <br><br>
+                <button id="save-course-btn" onclick="saveCourse()">Add Course</button>
+                <button id="cancel-edit-btn" class="hidden btn-secondary" onclick="cancelEdit()">Cancel Edit</button>
+                <p id="course-message"></p>
+            </div>
+
+            <table style="margin-top:20px;">
+                <thead>
+                    <tr>
+                        <th>Course ID</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Level</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="admin-courses-table-body">
+                    <tr><td colspan="6">Loading courses...</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Analytics Tab -->
+        <div id="panel-analytics" class="hidden">
+            <div id="analytics-container">
+                <p>Loading analytics...</p>
+            </div>
+        </div>
+
+        <!-- Announcements Tab -->
+        <div id="panel-announcements" class="hidden">
+            <div class="course-card">
+                <span class="field-label">Title</span>
+                <input type="text" id="announcement-title" placeholder="e.g. New course launching next week">
+                <span class="field-label">Message</span>
+                <textarea id="announcement-message" placeholder="Write your announcement here..."></textarea>
+                <br><br>
+                <button onclick="postAnnouncement()">Post Announcement</button>
+                <p id="announcement-message-box"></p>
+            </div>
+
+            <h2 style="margin-top:24px;">Latest</h2>
+            <div id="announcements-list">
+                <p>Loading announcements...</p>
+            </div>
+        </div>
+    </div>
+    <script src="admin-panel.js"></script>
+</body>
+</html>

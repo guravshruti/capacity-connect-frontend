@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacity Connect - Materials</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Capacity Connect</h2>
+        <div class="navbar-links">
+            <a href="courses.html">Courses</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="materials.html" class="active">Materials</a>
+            <a href="admin-panel.html">Admin</a>
+            <a href="certificates.html">Certificates</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+    <div class="app-main">
+        <div class="page-hero-plain">
+            <h1>Trainer Materials Upload</h1>
+            <p>Upload and manage supplementary training resources for your courses.</p>
+        </div>
+
+        <div style="display:flex; gap:24px; align-items:flex-start;">
+            <div style="flex:1; min-width:300px;">
+                <div class="course-card">
+                    <h3>New Material</h3>
+                    <span class="field-label">Associated Course</span>
+                    <select id="course-select" onchange="loadMaterials()"></select>
+                    <span class="field-label">Material Title</span>
+                    <input type="text" id="material-title" placeholder="e.g. Week 1 Lecture Slides">
+                    <span class="field-label">Link (URL)</span>
+                    <input type="text" id="material-url" placeholder="https://...">
+                    <br><br>
+                    <button onclick="uploadMaterial()">＋ Upload Material</button>
+                    <p id="upload-message"></p>
+                </div>
+            </div>
+
+            <div style="flex:2; min-width:340px;">
+                <div class="course-card">
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <h3>Uploaded Materials</h3>
+                    </div>
+                    <div id="materials-list">
+                        <p>Select a course above to see its materials.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="materials.js"></script>
+</body>
+</html>

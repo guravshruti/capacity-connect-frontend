@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacity Connect - Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Capacity Connect</h2>
+        <div class="navbar-links">
+            <a href="courses.html">Courses</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="materials.html">Materials</a>
+            <a href="admin-panel.html">Admin</a>
+            <a href="certificates.html">Certificates</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+    <div class="app-main" style="max-width:800px; margin:0 auto;">
+        <h1 id="quiz-title">Course Quiz</h1>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <span style="font-size:14px; color:var(--text-muted);">Annual Certification Module</span>
+            <span id="question-counter" class="status-pill enrolled">Question 1 of 5</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="quiz-progress-fill" style="width:0%;"></div></div>
+        <div class="progress-meta" style="margin-bottom:20px;">
+            <span>0%</span><span id="progress-percent-label">0% Completed</span><span>100%</span>
+        </div>
+
+        <div id="quiz-container">
+            <p>Loading quiz...</p>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; margin-top:20px;">
+            <button class="btn-secondary" id="prev-btn" onclick="goPrevious()">← Previous</button>
+            <button id="next-btn" onclick="goNext()">Next →</button>
+        </div>
+
+        <div id="quiz-result" style="margin-top:20px;"></div>
+    </div>
+    <script src="quiz.js"></script>
+</body>
+</html>

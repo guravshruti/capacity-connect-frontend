@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacity Connect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-shell">
+        <div class="form-block">
+            <h2>Capacity Connect</h2>
+            <p class="subtitle">Government Training Portal Authentication</p>
+
+            <div class="auth-toggle">
+                <button id="tab-signin" class="active" onclick="showLogin()">Sign In</button>
+                <button id="tab-signup" onclick="showSignup()">Create Account</button>
+            </div>
+
+            <div id="login-form">
+                <span class="field-label" style="text-align:left;">Official Email Address</span>
+                <input type="email" id="login-email" placeholder="you.name@department.gov">
+
+                <span class="field-label" style="text-align:left;">Password</span>
+                <div class="password-field-wrap">
+                    <input type="password" id="login-password" placeholder="••••••••">
+                    <span class="password-toggle" onclick="togglePassword('login-password', this)">👁</span>
+                </div>
+                <div style="text-align:right; margin-top:-4px;">
+                    <a href="#" style="font-size:12px;" onclick="alert('Please contact your administrator to reset your password.'); return false;">Forgot password?</a>
+                </div>
+
+                <br>
+                <button onclick="login()" style="width:100%;">Sign In</button>
+                <p id="login-message"></p>
+            </div>
+
+            <div id="signup-form" class="hidden">
+                <span class="field-label" style="text-align:left;">Full Name</span>
+                <input type="text" id="signup-name" placeholder="Enter your name">
+                <span class="field-label" style="text-align:left;">Official Email Address</span>
+                <input type="email" id="signup-email" placeholder="you.name@department.gov">
+
+                <span class="field-label" style="text-align:left;">Password</span>
+                <div class="password-field-wrap">
+                    <input type="password" id="signup-password" placeholder="Create a password">
+                    <span class="password-toggle" onclick="togglePassword('signup-password', this)">👁</span>
+                </div>
+
+                <br>
+                <button onclick="signup()" style="width:100%;">Create Account</button>
+                <p id="signup-message"></p>
+            </div>
+
+            <p style="font-size:12px; color:var(--text-muted); margin-top:20px;">🔒 Secure Ministry Authentication Portal</p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

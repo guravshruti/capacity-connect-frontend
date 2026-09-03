@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacity Connect - Courses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Capacity Connect</h2>
+        <div class="navbar-links">
+            <a href="courses.html" class="active">Courses</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="materials.html">Materials</a>
+            <a href="admin-courses.html">Admin</a>
+            <a href="analytics.html">Analytics</a>
+            <a href="certificates.html">Certificates</a>
+            <a href="announcements.html">Announcements</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+
+    <div class="app-shell">
+        <aside class="app-sidebar">
+            <div class="app-sidebar-top">
+                <div class="filter-group">
+                    <h3>Categories</h3>
+                    <label class="filter-option">
+                        <input type="checkbox" value="Technical" onchange="applyFilters()"> Technical
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="Scientific" onchange="applyFilters()"> Scientific
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="Administrative" onchange="applyFilters()"> Administrative
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="Policy & Compliance" onchange="applyFilters()"> Policy & Compliance
+                    </label>
+                </div>
+                <div class="filter-group">
+                    <h3>Level</h3>
+                    <label class="filter-option">
+                        <input type="checkbox" value="Beginner" onchange="applyFilters()"> Beginner
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="Intermediate" onchange="applyFilters()"> Intermediate
+                    </label>
+                    <label class="filter-option">
+                        <input type="checkbox" value="Advanced" onchange="applyFilters()"> Advanced
+                    </label>
+                </div>
+                <button class="btn-secondary" onclick="clearFilters()">Clear Filters</button>
+            </div>
+        </aside>
+
+        <main class="app-main">
+            <div class="page-hero-plain">
+                <h1>Course Catalog</h1>
+                <p>Explore and enroll in specialized training modules for your department.</p>
+            </div>
+
+            <input type="text" id="search-box" placeholder="Search courses by keyword..." oninput="searchCourses()" style="max-width:420px; margin-bottom:20px;">
+
+            <div id="courses-list" class="card-grid">
+                <p>Loading courses...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="courses.js"></script>
+</body>
+</html>

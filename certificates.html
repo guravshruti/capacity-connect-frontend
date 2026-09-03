@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacity Connect - Certificates</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Capacity Connect</h2>
+        <div class="navbar-links">
+            <a href="courses.html">Courses</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="materials.html">Materials</a>
+            <a href="admin-panel.html">Admin</a>
+            <a href="certificates.html" class="active">Certificates</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+    <div class="app-main">
+        <div class="page-hero-plain">
+            <h1>My Certificates</h1>
+            <p>Every course you've completed, ready to view or print.</p>
+        </div>
+        <div id="certificates-list" class="card-grid">
+            <p>Loading certificates...</p>
+        </div>
+    </div>
+    <script src="certificates.js"></script>
+</body>
+</html>

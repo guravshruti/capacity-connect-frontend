@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacity Connect - Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Capacity Connect</h2>
+        <div class="navbar-links">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="courses.html">Courses</a>
+            <a href="certificates.html">Certifications</a>
+        </div>
+    </nav>
+    <div class="app-shell">
+        <div class="app-sidebar">
+            <div class="app-sidebar-top">
+                <a href="dashboard.html">My Learning</a>
+                <a href="materials.html">Resources</a>
+                <a href="quiz.html">Assessments</a>
+                <a href="dashboard.html">Team Progress</a>
+                <a href="admin-panel.html">Admin Panel</a>
+            </div>
+            <div class="app-sidebar-bottom">
+                <a href="materials.html">Browse Catalog</a>
+                <a href="#">Settings</a>
+                <a href="#" onclick="logout()">Support</a>
+            </div>
+        </div>
+        <div class="app-main">
+            <h1 id="profile-name">My Profile</h1>
+            <p id="profile-email"></p>
+
+            <p id="profile-message"></p>
+
+            <div style="display:flex; gap:24px; align-items:flex-start; margin-top:20px;">
+                <div style="flex:1; min-width:280px;">
+                    <div class="course-card">
+                        <h3>Contact Information</h3>
+                        <p>📧 <span id="contact-email"></span></p>
+                    </div>
+                    <div class="course-card">
+                        <h3>Core Competencies</h3>
+                        <span class="field-label">Skills</span>
+                        <textarea id="skills" placeholder="e.g. Data Analysis, Public Policy, R & Python"></textarea>
+                        <span class="field-label">Interests</span>
+                        <textarea id="interests" placeholder="e.g. Marine biology, coastal ecosystems"></textarea>
+                    </div>
+                </div>
+                <div style="flex:2; min-width:320px;">
+                    <div class="course-card">
+                        <h3>Professional Experience</h3>
+                        <span class="field-label">Qualifications</span>
+                        <textarea id="qualifications" placeholder="e.g. B.Tech in Computer Science, 2023"></textarea>
+                        <span class="field-label">Work Experience</span>
+                        <textarea id="workExperience" placeholder="e.g. Senior Research Analyst, Dept of Health, 2019-Present"></textarea>
+                    </div>
+                    <div class="course-card">
+                        <h3>Certifications & Training</h3>
+                        <span class="field-label">Certificates</span>
+                        <textarea id="certificates" placeholder="e.g. Advanced Federal Data Security, Completed Oct 2023"></textarea>
+                    </div>
+                </div>
+            </div>
+            <button onclick="saveProfile()" style="margin-top:4px;">Save Profile</button>
+        </div>
+    </div>
+    <script src="profile.js"></script>
+</body>
+</html>

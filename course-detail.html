@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacity Connect - Course Detail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Capacity Connect</h2>
+        <div class="navbar-links">
+            <a href="courses.html">Courses</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="materials.html">Materials</a>
+            <a href="admin-panel.html">Admin</a>
+            <a href="certificates.html">Certificates</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+    <div class="app-main" style="max-width:900px; margin:0 auto;">
+        <a href="courses.html">← Back to Course Catalog</a>
+
+        <div id="course-header" style="margin-top:14px;">
+            <p>Loading course...</p>
+        </div>
+
+        <img id="course-image" style="width:100%; height:280px; object-fit:cover; border-radius:12px; margin-bottom:24px;">
+
+        <div style="display:flex; gap:24px; align-items:flex-start;">
+            <div style="flex:2;">
+                <div class="course-card">
+                    <h3>Course Description</h3>
+                    <p id="course-description"></p>
+                </div>
+
+                <h2 style="margin-top:24px;">Study Materials</h2>
+                <div id="course-materials-list">
+                    <p>Loading materials...</p>
+                </div>
+
+                <h2 style="margin-top:24px;">Feedback</h2>
+                <div id="course-feedback-list">
+                    <p>Loading feedback...</p>
+                </div>
+                <div class="course-card" style="margin-top:12px;">
+                    <span class="field-label">Rate this course</span>
+                    <select id="feedback-rating"></select>
+                    <textarea id="feedback-comment" placeholder="Share your thoughts on this course..."></textarea>
+                    <button onclick="submitFeedback()">Submit Feedback</button>
+                </div>
+            </div>
+
+            <div style="flex:1; min-width:260px;">
+                <div class="course-card">
+    <h3>Enrollment</h3>
+    <div id="course-enrollment-meta" style="font-size:13px; color:var(--text-muted);"></div>
+    <p id="course-avg-rating">No ratings yet</p>
+    <button onclick="enroll()" style="width:100%;">Enroll Now →</button>
+    <button class="btn-secondary" onclick="goToQuiz()" style="width:100%; margin-top:8px;">Take Quiz</button>
+</div>
+            </div>
+        </div>
+    </div>
+    <script src="course-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capacity Connect - Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h2>Capacity Connect</h2>
+        <div class="navbar-links">
+            <a href="courses.html">Courses</a>
+            <a href="dashboard.html" class="active">Dashboard</a>
+            <a href="profile.html">Profile</a>
+            <a href="materials.html">Materials</a>
+            <a href="admin-courses.html">Admin</a>
+            <a href="analytics.html">Analytics</a>
+            <a href="certificates.html">Certificates</a>
+            <a href="announcements.html">Announcements</a>
+            <a href="#" onclick="logout()">Logout</a>
+        </div>
+    </nav>
+
+    <div class="app-shell">
+        <aside class="app-sidebar">
+            <div class="app-sidebar-top">
+                <a href="dashboard.html" class="active">My Learning</a>
+                <a href="materials.html">Resources</a>
+                <a href="certificates.html">Assessments</a>
+                <a href="analytics.html">Team Progress</a>
+                <a href="admin-courses.html">Admin Panel</a>
+            </div>
+        </aside>
+
+        <main class="app-main">
+            <div class="page-hero-plain">
+                <h1>Trainee Dashboard</h1>
+                <p>Welcome back. Here is your current training progress.</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div>
+                    <h2>Enrolled Courses</h2>
+                    <div id="enrollments-list">
+                        <p>Loading your courses...</p>
+                    </div>
+                </div>
+                <div>
+                    <h2>Recent Credentials</h2>
+                    <div id="credentials-list">
+                        <p>Loading credentials...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
