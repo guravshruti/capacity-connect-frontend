@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://capacity-connect-backend-1.onrender.com";
+
 function switchTab(tabName) {
     document.getElementById("panel-courses").classList.add("hidden");
     document.getElementById("panel-analytics").classList.add("hidden");
@@ -25,7 +27,7 @@ function getStatusBadgeClass(status) {
 async function loadAdminCourses() {
     const tbody = document.getElementById("admin-courses-table-body");
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/courses/all");
+        const response = await fetch(API_BASE_URL + "/api/courses/all");
         const courses = await response.json();
 
         if (courses.length === 0) {
@@ -74,8 +76,8 @@ async function saveCourse() {
 
     const isEditing = editingCourseId !== null;
     const url = isEditing
-        ? "http://10.121.1.171:8080/api/courses/" + editingCourseId + "?role=ADMIN"
-        : "http://10.121.1.171:8080/api/courses/add?role=ADMIN";
+        ? API_BASE_URL + "/api/courses/" + editingCourseId + "?role=ADMIN"
+        : API_BASE_URL + "/api/courses/add?role=ADMIN";
     const method = isEditing ? "PUT" : "POST";
 
     try {
@@ -152,7 +154,7 @@ async function deleteCourse(courseId) {
     if (!confirmed) return;
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/courses/" + courseId + "?role=ADMIN", {
+        const response = await fetch(API_BASE_URL + "/api/courses/" + courseId + "?role=ADMIN", {
             method: "DELETE"
         });
 
@@ -171,7 +173,7 @@ async function loadAnalytics() {
     const container = document.getElementById("analytics-container");
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/analytics/summary");
+        const response = await fetch(API_BASE_URL + "/api/analytics/summary");
         const summary = await response.json();
 
         container.innerHTML =
@@ -199,7 +201,7 @@ async function loadAnnouncements() {
     const list = document.getElementById("announcements-list");
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/announcements/all");
+        const response = await fetch(API_BASE_URL + "/api/announcements/all");
         const announcements = await response.json();
 
         if (announcements.length === 0) {
@@ -239,7 +241,7 @@ async function postAnnouncement() {
     }
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/announcements/add?role=ADMIN", {
+        const response = await fetch(API_BASE_URL + "/api/announcements/add?role=ADMIN", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title: title, message: message })
