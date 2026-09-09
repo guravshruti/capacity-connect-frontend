@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://capacity-connect-backend-1.onrender.com";
+
 async function loadProfile() {
     const userId = localStorage.getItem("userId");
     const userName = localStorage.getItem("userName");
@@ -14,7 +16,7 @@ async function loadProfile() {
     document.getElementById("contact-email").textContent = userEmail || "";
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/trainee-profile/" + userId);
+        const response = await fetch(API_BASE_URL + "/api/trainee-profile/" + userId);
         if (response.ok) {
             const data = await response.json();
             if (data) {
@@ -47,7 +49,7 @@ async function saveProfile() {
         certificates: document.getElementById("certificates").value
     };
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/trainee-profile/" + userId, {
+        const response = await fetch(API_BASE_URL + "/api/trainee-profile/" + userId, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(profileData)
