@@ -1,3 +1,4 @@
+const API_BASE_URL = "https://capacity-connect-backend-1.onrender.com";
 
 function togglePassword(inputId, iconEl) {
     const input = document.getElementById(inputId);
@@ -32,7 +33,7 @@ async function login() {
     }
     try {
         const response = await fetch(
-            "http://10.121.1.171:8080/api/users/login",
+            API_BASE_URL + "/api/users/login",
             {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -72,7 +73,7 @@ async function signup() {
     }
     try {
         const response = await fetch(
-            "http://10.121.1.171:8080/api/users/signup",
+            API_BASE_URL + "/api/users/signup",
             {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
