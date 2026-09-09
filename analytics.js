@@ -1,8 +1,10 @@
+const API_BASE_URL = "https://capacity-connect-backend-1.onrender.com";
+
 async function loadAnalytics() {
     const container = document.getElementById("analytics-container");
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/analytics/summary");
+        const response = await fetch(API_BASE_URL + "/api/analytics/summary");
         const summary = await response.json();
 
         container.innerHTML =
