@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://capacity-connect-backend-1.onrender.com";
+
 async function loadCertificates() {
     const list = document.getElementById("certificates-list");
     const userId = localStorage.getItem("userId");
@@ -8,7 +10,7 @@ async function loadCertificates() {
     }
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/certificates/user/" + userId);
+        const response = await fetch(API_BASE_URL + "/api/certificates/user/" + userId);
         const certificates = await response.json();
 
         if (certificates.length === 0) {
