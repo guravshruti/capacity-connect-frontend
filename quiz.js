@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://capacity-connect-backend-1.onrender.com";
+
 const urlParams = new URLSearchParams(window.location.search);
 const courseId = urlParams.get("courseId");
 let quizQuestions = [];
@@ -15,7 +17,7 @@ async function loadQuiz() {
     }
 
     try {
-        const courseResponse = await fetch("http://10.121.1.171:8080/api/courses/all");
+        const courseResponse = await fetch(API_BASE_URL + "/api/courses/all");
         const allCourses = await courseResponse.json();
         const course = allCourses.find(function(c) { return c.id == courseId; });
 
@@ -23,12 +25,12 @@ async function loadQuiz() {
             document.getElementById("quiz-title").textContent = course.title + " Quiz";
         }
 
-        let response = await fetch("http://10.121.1.171:8080/api/quiz/" + courseId);
+        let response = await fetch(API_BASE_URL + "/api/quiz/" + courseId);
         let questions = await response.json();
 
         if (questions.length === 0) {
             container.innerHTML = "<p>Generating quiz questions...</p>";
-            const genResponse = await fetch("http://10.121.1.171:8080/api/quiz/generate", {
+            const genResponse = await fetch(API_BASE_URL + "/api/quiz/generate", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -130,7 +132,7 @@ async function submitQuiz() {
     });
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/quiz/submit", {
+        const response = await fetch(API_BASE_URL + "/api/quiz/submit", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(submissions)
