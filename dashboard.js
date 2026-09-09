@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://capacity-connect-backend-1.onrender.com";
+
 async function loadDashboard() {
     const list = document.getElementById("enrollments-list");
     const credentialsList = document.getElementById("credentials-list");
@@ -8,14 +10,14 @@ async function loadDashboard() {
         return;
     }
     try {
-        const coursesResponse = await fetch("http://10.121.1.171:8080/api/courses/all");
+        const coursesResponse = await fetch(API_BASE_URL + "/api/courses/all");
         const allCourses = await coursesResponse.json();
         const courseMap = {};
         allCourses.forEach(function(course) {
             courseMap[course.id] = course;
         });
 
-        const response = await fetch("http://10.121.1.171:8080/api/enrollments/user/" + userId);
+        const response = await fetch(API_BASE_URL + "/api/enrollments/user/" + userId);
         const enrollments = await response.json();
 
         if (enrollments.length === 0) {
@@ -105,7 +107,7 @@ async function saveProgress(enrollmentId) {
     const newProgress = slider.value;
     try {
         const response = await fetch(
-            "http://10.121.1.171:8080/api/enrollments/" + enrollmentId + "/progress?progressPercent=" + newProgress,
+            API_BASE_URL + "/api/enrollments/" + enrollmentId + "/progress?progressPercent=" + newProgress,
             { method: "PUT" }
         );
         if (response.ok) {
@@ -121,7 +123,7 @@ async function saveProgress(enrollmentId) {
 
 async function getCertificate(enrollmentId) {
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/certificates/generate/" + enrollmentId, {
+        const response = await fetch(API_BASE_URL + "/api/certificates/generate/" + enrollmentId, {
             method: "POST"
         });
         if (response.ok) {
