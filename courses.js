@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://capacity-connect-backend-iv03.onrender.com";
+const API_BASE_URL = "https://capacity-connect-backend-1.onrender.com";
 let allCourses = [];
 
 async function loadCourses() {
