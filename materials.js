@@ -1,8 +1,10 @@
+const API_BASE_URL = "https://capacity-connect-backend-1.onrender.com";
+
 async function loadCourseDropdown() {
     const select = document.getElementById("course-select");
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/courses/all");
+        const response = await fetch(API_BASE_URL + "/api/courses/all");
         const courses = await response.json();
 
         select.innerHTML = "";
@@ -31,7 +33,7 @@ async function loadMaterials() {
     list.innerHTML = "<p>Loading materials...</p>";
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/materials/course/" + courseId);
+        const response = await fetch(API_BASE_URL + "/api/materials/course/" + courseId);
         const materials = await response.json();
 
         if (materials.length === 0) {
@@ -80,7 +82,7 @@ async function uploadMaterial() {
     }
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/materials", {
+        const response = await fetch(API_BASE_URL + "/api/materials", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title: title, url: url, courseId: courseId })
@@ -107,7 +109,7 @@ async function deleteMaterial(materialId) {
     if (!confirmed) return;
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/materials/" + materialId, {
+        const response = await fetch(API_BASE_URL + "/api/materials/" + materialId, {
             method: "DELETE"
         });
 
