@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://capacity-connect-backend-1.onrender.com";
+
 const urlParams = new URLSearchParams(window.location.search);
 const courseId = urlParams.get("courseId");
 
@@ -16,7 +18,7 @@ async function loadCourseDetail() {
     }
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/courses/all");
+        const response = await fetch(API_BASE_URL + "/api/courses/all");
         const allCourses = await response.json();
         const course = allCourses.find(function(c) { return c.id == courseId; });
 
@@ -62,7 +64,7 @@ function buildRatingOptions() {
 async function loadMaterials() {
     const list = document.getElementById("course-materials-list");
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/materials/course/" + courseId);
+        const response = await fetch(API_BASE_URL + "/api/materials/course/" + courseId);
         const materials = await response.json();
 
         if (materials.length === 0) {
@@ -87,7 +89,7 @@ async function loadMaterials() {
 async function loadFeedback() {
     const list = document.getElementById("course-feedback-list");
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/feedback/course/" + courseId);
+        const response = await fetch(API_BASE_URL + "/api/feedback/course/" + courseId);
         const feedbackItems = await response.json();
 
         if (feedbackItems.length === 0) {
@@ -110,7 +112,7 @@ async function loadFeedback() {
 async function loadAverageRating() {
     const el = document.getElementById("course-avg-rating");
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/ratings/course/" + courseId + "/average");
+        const response = await fetch(API_BASE_URL + "/api/ratings/course/" + courseId + "/average");
         const avg = await response.json();
         el.textContent = avg ? "★ " + avg.toFixed(1) + " average rating" : "No ratings yet";
     } catch (error) {
@@ -134,7 +136,7 @@ async function submitFeedback() {
     }
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/feedback/add", {
+        const response = await fetch(API_BASE_URL + "/api/feedback/add", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -164,7 +166,7 @@ async function enroll() {
     }
     try {
         const response = await fetch(
-            "http://10.121.1.171:8080/api/enrollments/enroll?userId=" + userId + "&courseId=" + courseId,
+            API_BASE_URL + "/api/enrollments/enroll?userId=" + userId + "&courseId=" + courseId,
             { method: "POST" }
         );
         if (response.ok) {
