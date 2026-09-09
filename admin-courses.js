@@ -1,9 +1,11 @@
+const API_BASE_URL = "https://capacity-connect-backend-1.onrender.com";
+
 let editingCourseId = null;
 
 async function loadAdminCourses() {
     const list = document.getElementById("admin-courses-list");
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/courses/all");
+        const response = await fetch(API_BASE_URL + "/api/courses/all");
         const courses = await response.json();
 
         if (courses.length === 0) {
@@ -40,8 +42,8 @@ async function saveCourse() {
 
     const isEditing = editingCourseId !== null;
     const url = isEditing
-        ? "http://10.121.1.171:8080/api/courses/" + editingCourseId + "?role=ADMIN"
-        : "http://10.121.1.171:8080/api/courses/add?role=ADMIN";
+        ? API_BASE_URL + "/api/courses/" + editingCourseId + "?role=ADMIN"
+        : API_BASE_URL + "/api/courses/add?role=ADMIN";
     const method = isEditing ? "PUT" : "POST";
 
     try {
@@ -89,7 +91,7 @@ async function deleteCourse(courseId) {
     if (!confirmed) return;
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/courses/" + courseId + "?role=ADMIN", {
+        const response = await fetch(API_BASE_URL + "/api/courses/" + courseId + "?role=ADMIN", {
             method: "DELETE"
         });
 
