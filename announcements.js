@@ -1,8 +1,10 @@
+const API_BASE_URL = "https://capacity-connect-backend-1.onrender.com";
+
 async function loadAnnouncements() {
     const list = document.getElementById("announcements-list");
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/announcements/all");
+        const response = await fetch(API_BASE_URL + "/api/announcements/all");
         const announcements = await response.json();
 
         if (announcements.length === 0) {
@@ -42,7 +44,7 @@ async function postAnnouncement() {
     }
 
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/announcements/add?role=ADMIN", {
+        const response = await fetch(API_BASE_URL + "/api/announcements/add?role=ADMIN", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ title: title, message: message })
