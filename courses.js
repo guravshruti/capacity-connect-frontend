@@ -1,9 +1,10 @@
+const API_BASE_URL = "https://capacity-connect-backend-iv03.onrender.com";
 let allCourses = [];
 
 async function loadCourses() {
     const coursesList = document.getElementById("courses-list");
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/courses/all");
+        const response = await fetch(API_BASE_URL + "/api/courses/all")
         const courses = await response.json();
         allCourses = courses;
         applyFilters();
@@ -88,7 +89,7 @@ async function loadFeedback(courseId) {
     const list = document.getElementById("feedback-list-" + courseId);
     if (!list) return;
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/feedback/course/" + courseId);
+        const response = await fetch(API_BASE_URL + "/api/feedback/course/" + courseId)
         const feedbackItems = await response.json();
         if (feedbackItems.length === 0) {
             list.innerHTML = "<p>No feedback yet. Be the first to share yours.</p>";
@@ -118,7 +119,7 @@ async function submitFeedback(courseId) {
         return;
     }
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/feedback/add", {
+        const response = await fetch(API_BASE_URL + "/api/feedback/add", {...}), {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -147,7 +148,7 @@ async function enroll(courseId) {
     }
     try {
         const response = await fetch(
-            "http://10.121.1.171:8080/api/enrollments/enroll?userId=" + userId + "&courseId=" + courseId,
+            API_BASE_URL + "/api/enrollments/enroll?userId=" + userId + "&courseId=" + courseId, {...}),
             { method: "POST" }
         );
         if (response.ok) {
@@ -198,7 +199,7 @@ async function searchCourses() {
         return;
     }
     try {
-        const response = await fetch("http://10.121.1.171:8080/api/courses/search?keyword=" + encodeURIComponent(keyword));
+        const response = await fetch(API_BASE_URL + "/api/courses/search?keyword=" + encodeURIComponent(keyword));
         const courses = await response.json();
         allCourses = courses;
         applyFilters();
